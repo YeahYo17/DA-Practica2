@@ -54,7 +54,7 @@ public class Pruebas {
 	    bw.write(P + " " + K + " " + I);
 	    bw.newLine();
 		for(int j=0; j < I; j++){
-			bw.write(j+1 + " " + dinero + " " + kilos);
+			bw.write(dinero + " " + kilos);
 			bw.newLine();
 			
 		    dinero = (int)(rnd.nextDouble() * 100);
@@ -109,6 +109,10 @@ public class Pruebas {
 	}
 	
 	/**
+	 * Antiguo metodo de recopilar los datos de los euros dispuestos a pagar los viajeros,
+	 * del archivo de prueba a ejecutar.
+	 * ------------------------------------------------------------------------------------------------------
+	 * 
 	 * Lee el fichero asociado al caso de prueba y devuelve en un vector los pesos de los viajeros,
 	 * menos el primer elemento del fichero (el indice 0 del vector no se utiliza).
 	 * 
@@ -122,13 +126,13 @@ public class Pruebas {
 		
 		Scanner in = new Scanner(new FileReader(ruta));
 
-		in.nextInt(); in.nextInt(); in.nextInt(); in.nextInt();
+		in.nextInt(); in.nextInt(); in.nextInt();
 		
 		a[0] = 0;
 		while (in.hasNextInt() && i < N+1) {
 			a[i] = in.nextInt();
 			i++;
-			while(in.hasNextInt() && j < 2){
+			while(in.hasNextInt() && j < 1){
 				in.nextInt();
 				j++;
 			}
@@ -140,6 +144,9 @@ public class Pruebas {
 	}
 	
 	/**
+	 * Antiguo metodo de recopilar los datos de los pesos de los viajeros, del archivo de prueba a ejecutar.
+	 * ------------------------------------------------------------------------------------------------------
+	 * 
 	 * Lee el fichero asociado al caso de prueba y devuelve en un vector los euros dispuestos a pagar de los viajeros,
 	 * menos el primer elemento del fichero (el indice 0 del vector no se utiliza).
 	 * 
@@ -153,13 +160,13 @@ public class Pruebas {
 		
 		Scanner in = new Scanner(new FileReader(ruta));
 
-		in.nextInt(); in.nextInt(); in.nextInt(); in.nextInt(); in.nextInt();
+		in.nextInt(); in.nextInt(); in.nextInt(); in.nextInt();
 		
 		a[0] = 0;
 		while (in.hasNextInt() && i < N+1) {
 			a[i] = in.nextInt();
 			i++;
-			while(in.hasNextInt() && j < 2){
+			while(in.hasNextInt() && j < 1){
 				in.nextInt();
 				j++;
 			}
@@ -227,9 +234,28 @@ public class Pruebas {
 		
 	}
 	
+	/**
+	 * 
+	 * @param pasajeros -> Array de pasajeros, de tamaño igual al numero de viajeros solicitantes del viaje (N),
+	 * 						 los indices con valor '1' son los pasajeros que entrarian en el avion, '0' para los demas
+	 * 							(el indice 0 del vector no se utiliza)
+	 * @return -> Devuelve un entero con el numero de pasajeros que irian en el viaje.
+	 */
+	public static int calculaNumPasajeros(int[] pasajeros){
+		
+		int cont =0;
+		
+		for(int i=0; i < pasajeros.length; i++){
+			if(pasajeros[i] == 1){
+				cont++;
+			}
+		}
+		return cont;
+	}
+	
 	public static void main(String[] args) throws IOException{
 		
-		//creaPruebas(499,999,199);
+		//creaPruebas(500,1000,200);
 
 	    System.out.println("        --- DONE! --- ");
 	}

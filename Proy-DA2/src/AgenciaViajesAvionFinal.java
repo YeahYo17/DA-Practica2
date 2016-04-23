@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
-public class AgenciaViajesAvion {
+public class AgenciaViajesAvionFinal {
 	
 	/**		--- IMPORTANTE --- 
 	
@@ -34,6 +34,9 @@ public class AgenciaViajesAvion {
 	 *  N, contiene el valor de N del archivo de prueba (Numero de viajeros solicitantes del viaje).
 	 *  T, contiene el valor de T del archivo de prueba (Maximo Kilos que transporta el avion). 
 	 *  P, contiene el valor de P del archivo de prueba (Numero de plazas libres en el avion).
+	 *  
+	 *  Debido a esto tambien puede ser que en el estudio experimental hayan podido variar los tiempos
+	 *  de ejecucion del programa para los casos de prueba realizados.
 	 */
 	private static int[] VKilos;
 	private static int[] VEuros;
@@ -145,107 +148,23 @@ public class AgenciaViajesAvion {
 		System.out.println();
 		
 		scan.close();
-
-		/*
-		int P=0;
-		int N=0;
-		int T=0;
-		*/
-		
-		/*
-		String rutaFich = ruta + fichero;
-		Scanner scan2 = new Scanner(new FileReader(rutaFich));
-		
-		while (scan2.hasNextInt()) {
-			P = scan2.nextInt();
-			T = scan2.nextInt();
-			N = scan2.nextInt();
-			break;
-		}
-		
-		scan2.close();
-		*/
-				
-		/*
-		int[] VPrecio = Pruebas.leerVPrecio(rutaFich, N);
-		
-		System.out.print("VPrecio: \t");
-		for(int i=0; i < VPrecio.length; i++){
-			System.out.print(VPrecio[i] + " ");
-		}
-		System.out.println();
-		System.out.println();
-		
-		int[] VPeso = Pruebas.leerVPeso(rutaFich, N);
-		
-		System.out.print("VPeso: \t\t");
-		for(int i=0; i < VPeso.length; i++){
-			System.out.print(VPeso[i] + " ");
-		}
-		System.out.println();
-		System.out.println();
-
-		System.out.println("=====================================================================\n");
-
-		int[][][] tabla = new int[T+1][N+1][P+1];
-				
-		tabla = CalculaMB(VPeso,VPrecio, N,T,P);
-	
-		//Pruebas.Tiempo(end-start);
-
-		//Pruebas.imprimirTabla(tabla, N,T,P, true);
 		
 		System.out.println("\n=====================================================================\n");
-
-		int beneficio=0;
-		int cont=0;
-
-		beneficio = tabla[T][N][P];
-		
-		System.out.println("\n*********************************************************************");
-		System.out.println("***  SOLUCION: ");
-		System.out.println("***\t - Max. Beneficio = " + beneficio);
-		System.out.print("***\t - Array Pasajeros = [");
-		for(int i=0; i < pasajeros.length; i++){
-			System.out.print(pasajeros[i] + " ");
-		}
-		System.out.print("]\n");
-		System.out.print("***\t - Pasajeros = [");
-		for(int i=0; i < pasajeros.length; i++){
-			if(pasajeros[i] == 1){
-				System.out.print(i + " ");
-				cont++;
-			}
-		}
-		System.out.print("]");
-		System.out.println("\n***\t - Num. Pasajeros = " + cont);
-		System.out.println("*********************************************************************\n");
-		
-		Pruebas.creaSalida(cont, pasajeros, beneficio, N,T,P);
-		*/
-		
-		System.out.println("\n=====================================================================\n");
-
-		//int[][][] tabla = new int[T+1][N+1][P+1];
 		
 		String rutaFich = ruta + fichero;
-		leerDatos(rutaFich);
-		
-//		int[] VPrecio, VPeso;
-		
+				
 		int[][][] tabla;
 		int beneficio=0;
 		int V=0;
 		
 		long start = System.nanoTime();
 		
-//		VPrecio = Pruebas.leerVPrecio(rutaFich, N);
-//		VPeso = Pruebas.leerVPeso(rutaFich, N);
+		leerDatos(rutaFich);
 
-//		tabla = CalculaMB(VPeso,VPrecio, N,T,P);
-		
 		tabla = CalculaMB(VKilos, VEuros, N,T,P);
 		
+		//Pruebas.imprimirTabla(tabla, N,T,P, true);
+
 		beneficio = tabla[T][N][P];
 		
 		V = Pruebas.calculaNumPasajeros(pasajeros);
